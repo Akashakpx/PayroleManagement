@@ -1,1 +1,5 @@
-com\payrollmanagement\App.class
+com\payrollmanagement\SalaryCalculation.class
+com\payrollmanagement\EmployeeContract.class
+com\payrollmanagement\FullTimeEmployee.class
+com\payrollmanagement\PartTimeEmployee.class
+com\payrollmanagement\Employee.class

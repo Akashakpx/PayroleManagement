@@ -1,6 +1,6 @@
 package com.payrollmanagement;
 
-public class Employee {
+public abstract class Employee extends EmployeeContract {
     private int employeeId;
     private String name;
     private String department;
@@ -12,6 +12,8 @@ public class Employee {
         setDepartment(department);
         setBaseSalary(baseSalary);
     }
+
+    abstract int salaryCalculation();
 
     public int getEmployeeId() {
         return employeeId;
