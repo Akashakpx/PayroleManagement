@@ -1,7 +1,7 @@
 package com.payrollmanagement;
 
 public class FullTimeEmployee extends Employee{
-    int annualBonus;
+    private int annualBonus;
     public FullTimeEmployee(int employeeId, String name, String department, int baseSalary, int annualBonus) {
         super(employeeId, name, department, baseSalary);
         this.annualBonus = annualBonus;

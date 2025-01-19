@@ -53,6 +53,10 @@ public abstract class Employee extends EmployeeContract {
         this.baseSalary = baseSalary;
     }
 
+    public String displaySalaryDetails(){
+        return "Salary of the person is "+getBaseSalary();
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
