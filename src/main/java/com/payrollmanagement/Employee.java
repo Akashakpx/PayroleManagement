@@ -1,6 +1,6 @@
 package com.payrollmanagement;
 
-public abstract class Employee extends EmployeeContract {
+public abstract class Employee extends EmployeeContract implements Comparable<Employee> {
     private int employeeId;
     private String name;
     private String department;
@@ -11,6 +11,17 @@ public abstract class Employee extends EmployeeContract {
         setName(name);
         setDepartment(department);
         setBaseSalary(baseSalary);
+    }
+
+    @Override
+    public int compareTo(Employee b){
+        if(this.getEmployeeId()>b.getEmployeeId()){
+            return 1;
+        }else if(this.getEmployeeId() == b.getEmployeeId()){
+            return this.getName().compareTo(b.getName());
+        }else{
+            return -1;
+        }
     }
 
     abstract int salaryCalculation();
