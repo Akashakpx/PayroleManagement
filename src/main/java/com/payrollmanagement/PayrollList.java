@@ -14,22 +14,32 @@ public class PayrollList<T> {
             ((List<Payroll>) data).add(p);
         }else if(data instanceof Set){
             ((Set<Payroll>)data).add(p);
+        }else{
+            throw new IllegalArgumentException();
         }
     }
 
     public void printTaxDeductionAndOvertimeAddition(int hours) throws NoSuchMethodException {
-        if(data instanceof List){
-            List<Payroll> payrollList = (List<Payroll>) data;
-            for(Payroll payroll: payrollList){
-                System.out.println("salary after taxDeduction : " + payroll.taxDeduction());
-                System.out.println("salary after overtimeCostAddition : " + payroll.overtimeCostAddition(hours));
+        try{
+            if(data instanceof List){
+                List<Payroll> payrollList = (List<Payroll>) data;
+                for(Payroll payroll: payrollList){
+                    System.out.println("salary after taxDeduction : " + payroll.taxDeduction());
+                    System.out.println("salary after overtimeCostAddition : " + payroll.overtimeCostAddition(hours));
+                }
+            }else if(data instanceof Set){
+                Set<Payroll> payrollSet = (Set<Payroll>) data;
+                for(Payroll payroll:payrollSet) {
+                    System.out.println("salary after taxDeduction : " + payroll.taxDeduction());
+                    System.out.println("salary after overtimeCostAddition : " + payroll.overtimeCostAddition(hours));
+                }
+            }else{
+                throw new IllegalArgumentException();
             }
-        }else if(data instanceof Set){
-            Set<Payroll> payrollSet = (Set<Payroll>) data;
-            for(Payroll payroll:payrollSet) {
-                System.out.println("salary after taxDeduction : " + payroll.taxDeduction());
-                System.out.println("salary after overtimeCostAddition : " + payroll.overtimeCostAddition(hours));
-            }
+        } catch (ArithmeticException e) {
+            System.out.println("You should not divide by 0 as salary is 0");
+        } catch (Exception e) {
+            throw new PayrollComputationException("Payroll Compututation Exception");
         }
     }
 
