@@ -13,13 +13,13 @@ public class SalariesOfEmployeeList {
                 new FullTimeEmployee(4,"Nandi","IT",90000,3000)
         );
         if(employeeList!=null&&!employeeList.isEmpty()){
-            List<Integer> salariesAbove60000 = employeeList
+            List<Integer> annualSalaries = employeeList
                     .stream()
                     .filter(Objects::nonNull)
                     .map(Employee::getBaseSalary)
-                    .filter(e->e>60000)
+                    .map(salary -> salary*12)
                     .collect(Collectors.toList());
-            System.out.println(salariesAbove60000);
+            System.out.println(annualSalaries);
         }
 //        List<Integer> salaries = employeeList.stream().map(e->e.getBaseSalary()).collect(Collectors.toList());
 //        System.out.println(salaries);
